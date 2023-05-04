@@ -43,7 +43,7 @@ public class Servidor extends Proceso {
 
     private void enviarWrite(Trama tr) {
         recurso = extraerRecurso(tr);
-        Trama write = new Trama(super.id, tr.getOrigen(), "VAL " + "VAL " + recurso);
+        Trama write = new Trama(super.id, tr.getOrigen(), "VAL " + recurso);
         Enviar(write);
     }
 

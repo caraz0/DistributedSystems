@@ -1,7 +1,6 @@
 import ASlib.Distr.Red;
 import ASlib.Distr.Trama;
 
-import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.Semaphore;
