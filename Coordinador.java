@@ -19,7 +19,6 @@ public class Coordinador extends Proceso {
 
     public void run() {
         trazador.Print("Coordinador");
-        Pausa(100); //Esperamos a que todos los clientes esten listos la primera vez.
 
         //Inicio el primer estado
         estado = new Estado1();
