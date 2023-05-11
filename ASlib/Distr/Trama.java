@@ -1,50 +1,35 @@
 package ASlib.Distr;
 
-public class Trama implements Cloneable {
+public class Trama implements Cloneable
+    {
     public int origen;
     public int destino;
     public String mensaje;
 
-    public Trama() {
+    public String toString()
+        {
+        String s = "o:"+origen+" d:"+destino+ " m:"+mensaje;
+        return(s);
+        }
 
+    public Object clone()throws CloneNotSupportedException
+        {  
+		return super.clone();  
+        }  
+
+    Trama Clonar()
+        {
+        Trama trama = null;
+        
+        try
+            {
+            trama = (Trama)this.clone();
+            }
+        catch(CloneNotSupportedException e)
+            {
+            System.err.println("Error "+e.getMessage());
+            System.exit(666);
+            }
+        return (trama);
+        }
     }
-
-    public Trama(int origen, int destino, String mensaje) {
-        this.origen = origen;
-        this.destino = destino;
-        this.mensaje = mensaje;
-    }
-
-    public Trama(Trama trama) {
-        this(trama.getOrigen(), trama.getDestino(), trama.mensaje);
-    }
-
-    public int getOrigen() {
-        return origen;
-    }
-
-    public void setOrigen(int origen) {
-        this.origen = origen;
-    }
-
-    public int getDestino() {
-        return destino;
-    }
-
-    public void setDestino(int destino) {
-        this.destino = destino;
-    }
-
-    public String getMensaje() {
-        return mensaje;
-    }
-
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
-    }
-
-    public String toString() {
-        return "o:" + origen + " d:" + destino + " m:" + mensaje;
-    }
-
-}

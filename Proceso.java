@@ -19,7 +19,7 @@ public abstract class Proceso extends Hilo {
         Trama trama;
 
         while((trama = conector.Recibir()) == null)
-            Pausa(10);
+            Pausa(100);
 
         trazador.Print("Recibo " + trama);
         return trama;
@@ -27,8 +27,8 @@ public abstract class Proceso extends Hilo {
     }
 
     public void Enviar(Trama trama) {
-        intentarEnvio(trama);
         trazador.Print("Envio " + trama);
+        intentarEnvio(trama);
     }
 
     public void intentarEnvio(Trama trama) {

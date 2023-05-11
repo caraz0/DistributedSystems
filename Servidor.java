@@ -14,14 +14,16 @@ public class Servidor extends Proceso {
 
     public void run() {
 
+        boolean end = false;
         trazador.Print("Servidor");
-
-        while (true) {
+    
+        while (!end) {
             Trama tr;
             tr = Recibir();
+            
 
-            if (tr.getMensaje().equals("END"))
-                break;
+            if (tr.mensaje.equals("END"))   
+                end = true;
 
             String operacion = extraerOperacion(tr);
 
@@ -37,14 +39,20 @@ public class Servidor extends Proceso {
     }
 
     private void enviaRead(Trama tr) {
-        Trama read = new Trama(super.id, tr.getOrigen(), "VAL " + recurso);
-        Enviar(read);
+        Trama trama = new Trama();
+        trama.destino = tr.origen;
+        trama.origen = super.id;
+        trama.mensaje = "VAL " + recurso; 
+        Enviar(trama);
     }
 
     private void enviarWrite(Trama tr) {
         recurso = extraerRecurso(tr);
-        Trama write = new Trama(super.id, tr.getOrigen(), "VAL " + recurso);
-        Enviar(write);
+        Trama trama = new Trama();
+        trama.destino = tr.origen;
+        trama.origen = super.id;
+        trama.mensaje = "OK " + recurso; 
+        Enviar(trama);
     }
 
     private String extraerOperacion(Trama tr) {
